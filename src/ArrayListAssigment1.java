@@ -1,5 +1,7 @@
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+import java.util.Objects;
 
 class Participant {
     private String participantName;
@@ -48,13 +50,18 @@ class ArrayListAssigment1{
 
     public static List<Participant> generateListOfFinalists(Participant[] finalists) {
         // Implement your logic here and change the return statement accordingly
-
-        return null;
+        return List.of(finalists);  //return new ArrayList<>(List.of(finalists));
     }
 
     public static List<Participant> getFinalistsByTalent(List<Participant> finalists, String talent) {
         // Implement your logic here and change the return statement accordingly
-        return null;
+        List<Participant> finalTalent = new ArrayList<>();
+        for (Participant string : finalists){
+            if (Objects.equals(string.getParticipantTalent(), talent)){
+                finalTalent.add(string);
+            }
+        }
+        return finalTalent;
     }
 
     public static void main(String[] args) {
@@ -71,7 +78,7 @@ class ArrayListAssigment1{
         for (Participant finalist : finalistsList)
             System.out.println(finalist);
 
-        String talent = "Singing";
+        String talent = "Instrumental";
         System.out.println("Finalists in " + talent + " category");
 
         List<Participant> finalistsCategoryList = getFinalistsByTalent(finalistsList, talent);
